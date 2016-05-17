@@ -60,17 +60,6 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="SUBMIT"
-        android:id="@+id/submitButton"
-        android:layout_marginTop="33dp"
-        android:gravity="center"
-        android:layout_below="@+id/radioGroup"
-        android:layout_centerHorizontal="true"
-        android:onClick="advanceRed" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -99,6 +88,16 @@
             android:src="@drawable/greencar"
             android:layout_below="@+id/blueCar"
             android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:id="@+id/submitButton"
+            android:gravity="center"
+            android:onClick="checkQuestion"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </RelativeLayout>
