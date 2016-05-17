@@ -42,6 +42,8 @@ public class MainGame extends AppCompatActivity{
     RadioButton answer3;
     RadioButton answer4;
     ImageView redCar;
+    ImageView blueCar;
+    ImageView greenCar;
 
     private void addQuestion(String ques, String ans) {
         questions.addElement(ques);
@@ -85,6 +87,8 @@ public class MainGame extends AppCompatActivity{
         mManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         mChannel = mManager.initialize(this, getMainLooper(), null);
         redCar = (ImageView) findViewById(R.id.redCar);
+        blueCar = (ImageView) findViewById(R.id.blueCar);
+        greenCar = (ImageView) findViewById(R.id.greenCar);
     }
 
     public void advanceRed(View view) {
@@ -176,6 +180,7 @@ public class MainGame extends AppCompatActivity{
             }
         }
         questiontext.setText(questions.elementAt(currentquestion));
+        radiogroup.clearCheck();
     }
 
     public void checkQuestion(View view) {
@@ -188,13 +193,31 @@ public class MainGame extends AppCompatActivity{
             System.out.println("Found selected button!");
             if(selection.equals(answers.elementAt(currentquestion))) {
                 System.out.println("Correct!");
-                redCar.setPadding(redCar.getPaddingLeft()+10, 0 ,0 ,0);
+                redCar.setPadding(redCar.getPaddingLeft()+50, 0 ,0 ,0);
                 updateQuestion();
+                updatePlayerc();
             } else {
                 System.out.println("Wrong!");
+                updatePlayerc();
+                updateQuestion();
             }
         } else {
             System.out.println("No button was selected");
+        }
+    }
+
+    public void updatePlayerc() {
+        int correct;
+        correct = getRand(0,10);
+
+        if(correct > 5) {
+           blueCar.setPadding(blueCar.getPaddingLeft()+50, 0, 0, 0);
+        }
+
+        correct = getRand(0,10);
+
+        if(correct > 5) {
+            greenCar.setPadding(greenCar.getPaddingLeft()+50, 0, 0, 0);
         }
     }
 }
