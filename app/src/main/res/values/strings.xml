@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FastLaneAlgebra</string>
+    <string name="title_activity_red_win">RedWin</string>
 </resources>

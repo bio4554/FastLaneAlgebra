@@ -1,6 +1,7 @@
 package com.school.bio4554.fastlanealgebra;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,8 @@ public class MainGame extends AppCompatActivity {
     private final IntentFilter intentFilter = new IntentFilter();
     WifiP2pManager.Channel mChannel;
     WifiP2pManager mManager;
+    float scale;
+    int increasepad;
 
     public int getRand(int min, int max) {
         return rand.nextInt(max) + min;
@@ -47,8 +50,6 @@ public class MainGame extends AppCompatActivity {
     ImageView greenCar;
 
     private void addQuestion(String ques, String ans) {
-        questions.setSize(questions.capacity()+1);
-        answers.setSize(answers.capacity()+1);
         questions.addElement(ques);
         answers.addElement(ans);
     }
@@ -111,34 +112,36 @@ public class MainGame extends AppCompatActivity {
         redCar = (ImageView) findViewById(R.id.redCar);
         blueCar = (ImageView) findViewById(R.id.blueCar);
         greenCar = (ImageView) findViewById(R.id.greenCar);
+        scale = getResources().getDisplayMetrics().density;
+        increasepad = dpToPx(50, this);
     }
 
 
     public void updateQuestion() {
         currentanswer = getRand(1, 4);
         do {
-            currentquestion = getRand(0, questions.capacity());
+            currentquestion = getRand(0, questions.size());
         } while (currentquestion == prechoice);
         prechoice = currentquestion;
         for (int i = 1; i < 5; i++) {
             switch (i) {
                 case 1:
-                    answer1.setText(answers.elementAt(getRand(0, questions.capacity())));
+                    answer1.setText(answers.elementAt(getRand(0, questions.size())));
                     break;
                 case 2:
                     do {
-                        answer2.setText(answers.elementAt(getRand(0, questions.capacity())));
+                        answer2.setText(answers.elementAt(getRand(0, questions.size())));
                     } while (answer2.getText().equals(answer1.getText()));
                     break;
                 case 3:
                     do {
-                        answer3.setText(answers.elementAt(getRand(0, questions.capacity())));
+                        answer3.setText(answers.elementAt(getRand(0, questions.size())));
                     }
                     while ((answer3.getText().equals(answer1.getText())) || (answer3.getText().equals(answer2.getText())));
                     break;
                 case 4:
                     do {
-                        answer4.setText(answers.elementAt(getRand(0, questions.capacity())));
+                        answer4.setText(answers.elementAt(getRand(0, questions.size())));
                     }
                     while ((answer4.getText().equals(answer1.getText())) || (answer4.getText().equals(answer2.getText())) || (answer4.getText().equals(answer3.getText())));
                     break;
@@ -165,7 +168,7 @@ public class MainGame extends AppCompatActivity {
                     if (i != currentanswer) {
                         if (answer1.getText().equals(answers.elementAt(currentquestion))) {
                             do {
-                                answer1.setText(answers.elementAt(getRand(0, questions.capacity())));
+                                answer1.setText(answers.elementAt(getRand(0, questions.size())));
                             }
                             while ((answer1.getText().equals(answer2.getText())) || (answer1.getText().equals(answer3.getText())) || (answer1.getText().equals(answer4.getText())));
                         }
@@ -175,7 +178,7 @@ public class MainGame extends AppCompatActivity {
                     if (i != currentanswer) {
                         if (answer2.getText().equals(answers.elementAt(currentquestion))) {
                             do {
-                                answer2.setText(answers.elementAt(getRand(0, questions.capacity())));
+                                answer2.setText(answers.elementAt(getRand(0, questions.size())));
                             }
                             while ((answer2.getText().equals(answer1.getText())) || (answer2.getText().equals(answer3.getText())) || (answer2.getText().equals(answer4.getText())));
                         }
@@ -185,7 +188,7 @@ public class MainGame extends AppCompatActivity {
                     if (i != currentanswer) {
                         if (answer3.getText().equals(answers.elementAt(currentquestion))) {
                             do {
-                                answer3.setText(answers.elementAt(getRand(0, questions.capacity())));
+                                answer3.setText(answers.elementAt(getRand(0, questions.size())));
                             }
                             while ((answer3.getText().equals(answer2.getText())) || (answer3.getText().equals(answer1.getText())) || (answer3.getText().equals(answer4.getText())));
                         }
@@ -195,7 +198,7 @@ public class MainGame extends AppCompatActivity {
                     if (i != currentanswer) {
                         if (answer4.getText().equals(answers.elementAt(currentquestion))) {
                             do {
-                                answer4.setText(answers.elementAt(getRand(0, questions.capacity())));
+                                answer4.setText(answers.elementAt(getRand(0, questions.size())));
                             }
                             while ((answer4.getText().equals(answer2.getText())) || (answer4.getText().equals(answer3.getText())) || (answer4.getText().equals(answer1.getText())));
                         }
@@ -218,14 +221,16 @@ public class MainGame extends AppCompatActivity {
             if (selection.equals(answers.elementAt(currentquestion))) {
                 System.out.println("Correct!");
                 disToast("Correct!");
-                redCar.setPadding(redCar.getPaddingLeft() + 50, 0, 0, 0);
+                redCar.setPadding(redCar.getPaddingLeft() + increasepad, 0, 0, 0);
                 updateQuestion();
                 updatePlayerc();
+                checkWin();
             } else {
                 System.out.println("Wrong!");
                 disToast("Wrong!");
                 updatePlayerc();
                 updateQuestion();
+                checkWin();
             }
         } else {
             System.out.println("No button was selected");
@@ -238,13 +243,13 @@ public class MainGame extends AppCompatActivity {
         correct = getRand(0, 10);
 
         if (correct > 5) {
-            blueCar.setPadding(blueCar.getPaddingLeft() + 50, 0, 0, 0);
+            blueCar.setPadding(blueCar.getPaddingLeft() + increasepad, 0, 0, 0);
         }
 
         correct = getRand(0, 10);
 
         if (correct > 5) {
-            greenCar.setPadding(greenCar.getPaddingLeft() + 50, 0, 0, 0);
+            greenCar.setPadding(greenCar.getPaddingLeft() + increasepad, 0, 0, 0);
         }
     }
 
@@ -254,5 +259,30 @@ public class MainGame extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, name, duration);
         toast.show();
+    }
+
+    public void checkWin() {
+        System.out.println(dpToPx(300, this));
+        System.out.println("Red car: " + dpToPx(redCar.getPaddingLeft(), this));
+        System.out.println("Blue car: " + dpToPx(blueCar.getPaddingLeft(), this));
+        System.out.println("Green car: " + dpToPx(greenCar.getPaddingLeft(), this));
+        if(redCar.getPaddingLeft() >= 4900) {
+            handleWin(1);
+        } else if(blueCar.getPaddingLeft() >= 4900) {
+            handleWin(2);
+        } else if(greenCar.getPaddingLeft() >= 4900) {
+            handleWin(3);
+        }
+    }
+
+    public void handleWin(int car) {
+        Intent mainintent = new Intent(this, RedWin.class);
+        mainintent.putExtra("car", car);
+        startActivity(mainintent);
+    }
+
+    public static int dpToPx(int dp, Context context) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 }

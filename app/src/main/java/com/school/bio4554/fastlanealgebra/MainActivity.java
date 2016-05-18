@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import java.util.Random;
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
+
 
 
     @Override

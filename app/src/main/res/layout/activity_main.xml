@@ -18,48 +18,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="116dp"
-        android:id="@+id/radioGroup">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/answerChoice1" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/answerChoice2" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/answerChoice3" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/answerChoice4" />
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/questionText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -92,14 +50,56 @@
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="√"
+            android:text="Submit"
             android:id="@+id/submitButton"
             android:gravity="center"
             android:onClick="checkQuestion"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:id="@+id/radioGroup"
+            android:layout_marginBottom="31dp"
+            android:layout_above="@+id/submitButton"
+            android:layout_alignParentStart="true">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New RadioButton"
+                android:id="@+id/answerChoice1" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New RadioButton"
+                android:id="@+id/answerChoice2" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New RadioButton"
+                android:id="@+id/answerChoice3" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New RadioButton"
+                android:id="@+id/answerChoice4" />
+        </RadioGroup>
+
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/questionText"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
