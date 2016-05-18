@@ -30,8 +30,8 @@ public class MainGame extends AppCompatActivity {
         return rand.nextInt(max) + min;
     }
 
-    Vector<String> questions = new Vector<>(4);
-    Vector<String> answers = new Vector<>(4);
+    Vector<String> questions = new Vector<>();
+    Vector<String> answers = new Vector<>();
     int currentquestion; //Index of current question in vector
     int currentanswer; //Radio button with answer
     int prechoice = 0;
@@ -47,15 +47,39 @@ public class MainGame extends AppCompatActivity {
     ImageView greenCar;
 
     private void addQuestion(String ques, String ans) {
+        questions.setSize(questions.capacity()+1);
+        answers.setSize(answers.capacity()+1);
         questions.addElement(ques);
         answers.addElement(ans);
     }
 
     private void initQuestions() {
-        addQuestion("X+2=4", "X=2");
-        addQuestion("X-5=7", "X=12");
-        addQuestion("X+9=8", "X=-1");
-        addQuestion("X-2=9", "X=11");
+        //Long division
+        addQuestion("x^3 - 4x^2 + 2x + 5 / x-2", "x^2 - 2x - 2 + 1/x-2");
+
+        //Quadratic
+        addQuestion("Solve x^2 + 3x - 9 = 0 using the quadratic formula", "x = -9, x = 1");
+
+        //Compound interest
+        addQuestion("If you start a bank account with a deposit of $10,000 and the bank compounds the interest quarterly at a rate of 8%. how much money will you have after 5 years?", "$14,859.47");
+
+        //Transformations
+        addQuestion("What transformations graph the function of x^2 to the function -2(x+9)^2 - 57", "Reflection over X-axis, shift left 9, shift upwards 5");
+
+        //Solving system of equations
+        addQuestion("Solve the system using substitution: 3y - 2x = 11, y + 2x = 9", "x = 5, {5,5}");
+
+        //Arithmetic sequence
+        addQuestion("A jogger is training. The first week he runs 2 miles each session, increasing the distance he runs by 1.5 miles. Write a recursive definition for the sequence", "A(n-1)+1.5");
+
+        //Exponential growth/decay
+        addQuestion("Use the domain {1,2,3} to evaluate the function. y=40(1/2)^x", "20, 10, 5");
+
+        //Exponents
+        addQuestion("Simplify √(3x^2*y^3/4√(5xy^3))", "√(15x/20)");
+
+        //Solve by completing
+        addQuestion("n^2 + 19n + 66 = 6", "(-9 or -15)");
     }
 
 
@@ -84,8 +108,6 @@ public class MainGame extends AppCompatActivity {
         answer4 = (RadioButton) findViewById(R.id.answerChoice4);
         radiogroup = (RadioGroup) findViewById(R.id.radioGroup);
         updateQuestion();
-        mManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
-        mChannel = mManager.initialize(this, getMainLooper(), null);
         redCar = (ImageView) findViewById(R.id.redCar);
         blueCar = (ImageView) findViewById(R.id.blueCar);
         greenCar = (ImageView) findViewById(R.id.greenCar);
