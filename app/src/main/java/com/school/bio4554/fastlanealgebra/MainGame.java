@@ -10,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
+
+import io.github.kexanie.library.MathView;
 
 /**
  * Created by bio4554 on 5/16/2016.
@@ -34,6 +37,7 @@ public class MainGame extends AppCompatActivity{
     int currentquestion; //Index of current question in vector
     int currentanswer; //Radio button with answer
     int prechoice = 0;
+    String test = "$$\\\\sum_{i=0}^n i^2 = \\\\frac{(n^2+n)(2n+1)}{6}$$";
 
     TextView questiontext;
     RadioGroup radiogroup;
@@ -193,16 +197,19 @@ public class MainGame extends AppCompatActivity{
             System.out.println("Found selected button!");
             if(selection.equals(answers.elementAt(currentquestion))) {
                 System.out.println("Correct!");
+                disToast("Correct!");
                 redCar.setPadding(redCar.getPaddingLeft()+50, 0 ,0 ,0);
                 updateQuestion();
                 updatePlayerc();
             } else {
                 System.out.println("Wrong!");
+                disToast("Wrong!");
                 updatePlayerc();
                 updateQuestion();
             }
         } else {
             System.out.println("No button was selected");
+            disToast("No button selected");
         }
     }
 
@@ -219,5 +226,14 @@ public class MainGame extends AppCompatActivity{
         if(correct > 5) {
             greenCar.setPadding(greenCar.getPaddingLeft()+50, 0, 0, 0);
         }
+    }
+
+    public void disToast(String name) {
+        Context context = getApplicationContext();
+        CharSequence text = name;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
