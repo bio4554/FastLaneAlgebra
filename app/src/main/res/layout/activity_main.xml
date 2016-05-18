@@ -92,12 +92,14 @@
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="SUBMIT"
+            android:text="√"
             android:id="@+id/submitButton"
             android:gravity="center"
             android:onClick="checkQuestion"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+
+
     </RelativeLayout>
 
 </RelativeLayout>
