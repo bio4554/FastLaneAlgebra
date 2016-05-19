@@ -23,27 +23,27 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:id="@+id/redCar"
             android:layout_marginTop="70dp"
-            android:src="@drawable/redcar"
+            android:src="@drawable/bugatti"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:id="@+id/blueCar"
-            android:src="@drawable/bluecar"
+            android:src="@drawable/charger"
             android:layout_below="@+id/redCar"
             android:layout_alignParentStart="true" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:id="@+id/greenCar"
-            android:src="@drawable/greencar"
+            android:src="@drawable/aventador"
             android:layout_below="@+id/blueCar"
             android:layout_alignParentStart="true" />
 
