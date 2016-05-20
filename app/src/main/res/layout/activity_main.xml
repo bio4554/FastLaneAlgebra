@@ -23,29 +23,29 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="100dp"
             android:layout_height="50dp"
             android:id="@+id/redCar"
             android:layout_marginTop="70dp"
-            android:src="@drawable/bugatti"
+            android:src="@drawable/redcar"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content" />
 
         <ImageView
-            android:layout_width="100dp"
             android:layout_height="50dp"
             android:id="@+id/blueCar"
-            android:src="@drawable/charger"
+            android:src="@drawable/bluecar"
             android:layout_below="@+id/redCar"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content" />
 
         <ImageView
-            android:layout_width="100dp"
             android:layout_height="50dp"
             android:id="@+id/greenCar"
-            android:src="@drawable/aventador"
+            android:src="@drawable/greencar"
             android:layout_below="@+id/blueCar"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content" />
 
         <Button
             android:layout_width="200dp"
@@ -89,6 +89,26 @@
                 android:text="New RadioButton"
                 android:id="@+id/answerChoice4" />
         </RadioGroup>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/progressBar3"
+            android:indeterminate="false"
+            android:maxWidth="45dip" />
+
+        <TextView
+            android:text="Fill up the bar to win, but make sure and do it before the other cars finish the race!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:layout_below="@+id/progressBar3"
+            android:layout_alignParentStart="true" />
 
 
     </RelativeLayout>

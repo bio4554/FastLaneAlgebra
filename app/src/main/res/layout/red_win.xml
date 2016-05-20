@@ -13,14 +13,15 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Red Car wins!"
+        android:text="Red Car wins, congratulations!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:layout_below="@+id/imageView5"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:gravity="center"/>
 
     <Button
         android:text="RESTART"
