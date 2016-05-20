@@ -274,14 +274,14 @@ public class MainGame extends AppCompatActivity {
 
     public void updatePlayerc() {
         int correct;
-        correct = getRand(0, 10);
+        correct = getRand(3, 10);
 
         if (correct > 5) {
             bluecorrect++;
             blueCar.setPadding(blueCar.getPaddingLeft() + increasepad, 0, 0, 0);
         }
 
-        correct = getRand(0, 10);
+        correct = getRand(3, 10);
 
         if (correct > 5) {
             greencorrect++;
